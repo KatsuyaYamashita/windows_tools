@@ -42,8 +42,12 @@ class Mdb:
           mdb_name: 扱うmdbファイル名(パス付)
         """
 
-        __CONNECTION_STRING = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=%s;"
-#        __CONNECTION_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=%s;"
+#        __CONNECTION_STRING = "Driver={Microsoft Access Driver (*.mdb)};DBQ=%s;"
+        __CONNECTION_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=%s;"
+
+        # OLEDB.4.0はAccess2007以降非推奨となった
+        # http://msdn.microsoft.com/ja-jp/library/office/ff965871%28v=office.14%29.aspx#DataProgrammingWithAccess2010_using32vs64ace
+#        __CONNECTION_STRING = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=%s;"
         self._connection_string = __CONNECTION_STRING % (mdb_name)
         print(self._connection_string)
 
